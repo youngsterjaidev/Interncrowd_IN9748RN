@@ -26,7 +26,7 @@ jobs:
           ls -lash
       - name: Create _redirects file
         run: |
-          echo "/*    /index.html   200" > dist/_redirects
+          echo "/*    /index.html   200" > ./dist/_redirects
           
       - name: Deploy to Netlify
         run: |
