@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Input } from "../components";
 import styled from "styled-components";
-import { firebaseDAO } from "../../firebase";
 import { Link } from "@reach/router";
 import firestoreTest from "../data";
 import { TopPosts } from "../components/TopPosts";
@@ -165,7 +164,7 @@ const BlogCard = styled.div`
   }
 `;
 
-const Image = styled.div`
+const Image = styled.div<{ url: any }>`
   aspect-ratio: 1/0.7;
   background url("${(props) => props.url}");
   background-size: cover;
