@@ -18,11 +18,11 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build and Publish
         run: |
-          npm run build
+          cd ./task2 && npm run build
           echo "Publishing to Netlify..."
           npm install netlify-cli -g
           netlify deploy --prod --dir=./task2/dist --auth="${{ secrets.NETLIFY_AUTH_TOKEN }}"
