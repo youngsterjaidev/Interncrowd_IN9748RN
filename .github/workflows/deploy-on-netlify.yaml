@@ -23,6 +23,7 @@ jobs:
       - name: Build and Publish
         run: |
           cd ./task2 && npm run build
+          ls -lash
           echo "Publishing to Netlify..."
           npm install netlify-cli -g --legacy-peer-deps
           netlify deploy --prod --dir=./task2/dist --site="${{secrets.NETLIFY_SITE_ID}}" --auth="${{ secrets.NETLIFY_AUTH_TOKEN }}"
