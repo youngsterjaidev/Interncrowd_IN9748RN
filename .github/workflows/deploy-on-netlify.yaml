@@ -24,6 +24,12 @@ jobs:
         run: |
           cd ./task2 && npm run build
           ls -lash
+      - name: Create _redirects file
+        run: |
+          echo "/*    /index.html   200" > dist/_redirects
+          
+      - name: Deploy to Netlify
+        run: |
           echo "Publishing to Netlify..."
           npm install netlify-cli -g --legacy-peer-deps
           netlify deploy --prod --dir=./dist --site="${{secrets.NETLIFY_SITE_ID}}" --auth="${{ secrets.NETLIFY_AUTH_TOKEN }}"
