@@ -9,7 +9,7 @@ interface Props {}
 const Container = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: ${(props) => props.theme.backgroundColor};
+  background: ${(props) => props.theme.outline};
   display: grid;
   place-items: center;
 `;
@@ -17,11 +17,11 @@ const Container = styled.div`
 const Form = styled.form`
   padding: 1ch 2ch;
   aspect-ratio: 1/1.3;
-
-  & > div {
-    padding: 0.3rem 0rem;
-  }
 `;
+
+const FormGroup = styled.div`
+  padding: 0.4rem 0rem;
+`
 
 const H2 = styled.h2`
   text-align: center;
@@ -40,8 +40,22 @@ const MyLink = styled(Link)`
   display: block;
   text-align: center;
   text-decoration: none;
-  padding: 0.3rem 0rem;
+  padding: 0.7rem 0rem;
 `;
+
+const Message = styled.div`
+  text-align: center;
+  width: max-content;
+  background: ${props => props.theme.primary};
+  color: ${props => props.theme.backgroundColor};
+  border-radius: ${props => props.theme.borderRadius};
+  padding: 0.3rem 1rem;
+  margin: 0px auto;
+
+  &:empty {
+    padding: 0rem;
+  }
+`
 
 export default ({}: Props) => {
   const [isFormValid, setIsFormValid] = useState(false);
@@ -92,8 +106,8 @@ export default ({}: Props) => {
       <Form onSubmit={handleSubmit}>
         <H2>InternCrowd</H2>
         <H4>Become a memeber!</H4>
-        <legend>{message}</legend>
-        <div>
+        <Message>{message}</Message>
+        <FormGroup>
           <Input
             type="email"
             name="email"
@@ -103,8 +117,8 @@ export default ({}: Props) => {
             autoComplete="off"
             required
           />
-        </div>
-        <div>
+        </FormGroup>
+        <FormGroup>
           <Input
             type="password"
             name="password"
@@ -114,13 +128,13 @@ export default ({}: Props) => {
             autoComplete="off"
             required
           />
-        </div>
-        <div>
+        </FormGroup>
+        <FormGroup>
           <FormButton type="submit" disabled={!isFormValid}>
             Login
           </FormButton>
           <MyLink to="/createaccount">Create Account</MyLink>
-        </div>
+        </FormGroup>
       </Form>
     </Container>
   );

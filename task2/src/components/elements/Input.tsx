@@ -4,8 +4,8 @@ import styled from "styled-components";
 export const Input = styled.input`
   width: 100%;
   min-width: 18rem;
-  padding: 1ch 2ch;
-  border: 2px solid ${(props) => props.theme.primary};
+  padding: 1.5ch 2ch;
+  border: none;
   border-radius: ${(props) => props.theme.borderRadius};
 
   &::placeholder {
@@ -16,8 +16,9 @@ export const Input = styled.input`
 
   &:focus,
   &:active {
-    outline: 4px solid ${(props) => props.theme.primary};
+    outline: 1.9px solid ${(props) => props.theme.outline};
     outline-offset: 1px;
+    box-shadow: ${props => props.theme.shadow};
   }
 
   @media (max-width: 550px) {
