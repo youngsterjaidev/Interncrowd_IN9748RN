@@ -9,7 +9,7 @@ interface Props {}
 const Container = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: ${(props) => props.theme.backgroundColor};
+  background: ${(props) => props.theme.outline};
   display: grid;
   place-items: center;
 `;
@@ -17,11 +17,11 @@ const Container = styled.div`
 const Form = styled.form`
   padding: 1ch 2ch;
   aspect-ratio: 1/1.3;
-
-  & > div {
-    padding: 0.3rem 0rem;
-  }
 `;
+
+const FromGroup = styled.div`
+    padding: 0.3rem 0rem;
+`
 
 const H2 = styled.h2`
   text-align: center;
@@ -40,8 +40,22 @@ const MyLink = styled(Link)`
   display: block;
   text-align: center;
   text-decoration: none;
-  padding: 0.3rem 0rem;
+  padding: 0.7rem 0rem;
 `;
+
+const Message = styled.div`
+  text-align: center;
+  width: max-content;
+  background: ${props => props.theme.primary};
+  color: ${props => props.theme.backgroundColor};
+  border-radius: ${props => props.theme.borderRadius};
+  padding: 0.3rem 1rem;
+  margin: 0px auto;
+
+  &:empty {
+    padding: 0rem;
+  }
+`
 
 export default ({}: Props) => {
   const [isFormValid, setIsFormValid] = useState(false);
@@ -99,8 +113,8 @@ export default ({}: Props) => {
       <Form onSubmit={handleSubmit}>
         <H2>InternCrowd</H2>
         <H4>Become a memeber!</H4>
-        <legend>{message}</legend>
-        <div>
+        <Message>{message}</Message>
+        <FromGroup>
           <Input
             type="text"
             name="username"
@@ -110,8 +124,8 @@ export default ({}: Props) => {
             autoComplete="off"
             required
           />
-        </div>
-        <div>
+        </FromGroup>
+        <FromGroup>
           <Input
             type="email"
             name="email"
@@ -121,8 +135,8 @@ export default ({}: Props) => {
             autoComplete="off"
             required
           />
-        </div>
-        <div>
+        </FromGroup>
+        <FromGroup>
           <Input
             type="text"
             name="password"
@@ -132,13 +146,22 @@ export default ({}: Props) => {
             autoComplete="off"
             required
           />
-        </div>
-        <div>
+        </FromGroup>
+        <FromGroup>
+          <Input
+            type="text"
+            name="password"
+            placeholder="confirm password"
+            autoComplete="off"
+            required
+          />
+        </FromGroup>
+        <FromGroup>
           <FormButton type="submit" disabled={!isFormValid}>
             Create An Account!
           </FormButton>
           <MyLink to="/">Login</MyLink>
-        </div>
+        </FromGroup>
       </Form>
     </Container>
   );

@@ -11,7 +11,7 @@ export const Button = styled.button<Props>`
   border: 1px solid ${(props) => props.theme.button};
   background: ${(props) => props.theme.button};
   color: #fff;
-  padding: 1ch 2ch;
+  padding: 1.5ch 2ch;
   border-radius: ${(props) => props.theme.borderRadius};
   font-weight: bold;
   cursor: pointer;
