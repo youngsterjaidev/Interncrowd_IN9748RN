@@ -3,8 +3,24 @@ import styled from "styled-components";
 
 export const Input = styled.input`
   width: 100%;
-  padding: 1rem 0.6rem;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 10px 10px 100px 20px rgba(0, 0, 0, 0.1);
+  min-width: 18rem;
+  padding: 1ch 2ch;
+  border: 2px solid ${(props) => props.theme.primary};
+  border-radius: ${(props) => props.theme.borderRadius};
+
+  &::placeholder {
+    font-family: ${(props) => props.theme.fontFamily};
+    font-weight: bold;
+    color: ${(props) => props.theme.primary};
+  }
+
+  &:focus,
+  &:active {
+    outline: 4px solid ${(props) => props.theme.primary};
+    outline-offset: 1px;
+  }
+
+  @media (max-width: 550px) {
+    min-width: auto;
+  }
 `;

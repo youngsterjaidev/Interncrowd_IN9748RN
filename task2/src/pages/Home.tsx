@@ -5,6 +5,8 @@ import { Link } from "@reach/router";
 import firestoreTest from "../data";
 import { TopPosts } from "../components/TopPosts";
 
+interface Props {}
+
 interface Blog {
   id: number;
   title: string;
@@ -174,7 +176,7 @@ const Image = styled.div<{ url: any }>`
   
 `;
 
-export default () => {
+export default ({}: Props) => {
   const [blogData, setBlogData] = useState<null | [] | Blog[]>([]);
 
   useEffect(() => {

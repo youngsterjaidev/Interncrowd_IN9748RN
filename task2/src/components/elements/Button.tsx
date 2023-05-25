@@ -11,8 +11,8 @@ export const Button = styled.button<Props>`
   border: 1px solid ${(props) => props.theme.button};
   background: ${(props) => props.theme.button};
   color: #fff;
-  padding: 0.6rem 2.5rem;
-  border-radius: 2rem;
+  padding: 1ch 2ch;
+  border-radius: ${(props) => props.theme.borderRadius};
   font-weight: bold;
   cursor: pointer;
   font-family: ${(props) => props.theme.fontFamily};
@@ -20,6 +20,12 @@ export const Button = styled.button<Props>`
   &:hover {
     background: ${(props) => props.theme.buttonHover};
     color: white;
+  }
+
+  &:disabled {
+    background: ${(props) => props.theme.placeholderDark};
+    border-color: ${(props) => props.theme.placeholderDark};
+    cursor: not-allowed;
   }
 
   ${(props) =>
